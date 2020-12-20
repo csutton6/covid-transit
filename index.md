@@ -1,7 +1,7 @@
 ---
 layout: default
 altair-loader:
-  altair-chart-1: "charts/measlesAltair.json"
+  altair-chart-1: "charts/covid_lines_1.json"
 hv-loader:
   hv-chart-1: ["charts/measlesHvplot.html", "500"] # second argument is the desired height
 folium-loader:
@@ -13,11 +13,12 @@ folium-loader:
 
 The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
 
+<div id="altair-chart-1"></div>
 [[chart of ridership changes by month at top 40 transit agencies in 2020]]
 
-However, not all agencies have been affected equally. Some agencies have different temporal patterns, such as not plummeting until the second wave in July or making a stronger recovery in the fall. Other differences relate to the magnitude of ridership losses: some agencies have not seen ridership plummet quite as much as other. In this project, I use clustering analysis to identify agencies that might have experienced similar ridership patterns throughout the pandemic. 
+However, not all agencies have been affected equally. Some agencies have different temporal patterns, such as not plummeting until the second wave in July or making a stronger recovery in the fall. Other differences relate to the magnitude of ridership losses: some agencies have not seen ridership plummet quite as much as other. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
 
-I see this as interesting in two ways. Firstly as an exploratory exercise to understand the ways in which different transit agencies have fared. This general understanding of the different experiences of transit providers could help inform what will happen in the future. After experiencing such staggering ridership losses, it remains unclear if transit agencies will be able to maintain the same level of service they operated before the pandemic. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40% 
+I see this as interesting in two ways. Firstly as an exploratory exercise to understand the ways in which different transit agencies have fared. This general understanding could help us predict what will happen in the future. After experiencing such staggering ridership losses, it remains unclear if transit agencies will be able to maintain the same level of service they operated before the pandemic. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. 
 
 
 # Example: Embedding Altair & Hvplot Charts
@@ -28,7 +29,7 @@ This section will show examples of embedding interactive charts produced using [
 
 Below is a chart of the incidence of measles since 1928 for the 50 US states.
 
-<div id="altair-chart-1"></div>
+<!-- <div id="altair-chart-1"></div> -->
 
 This was produced using Altair and embedded in this static web page. Note that you can also display Python code on this page:
 
