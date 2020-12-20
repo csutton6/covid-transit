@@ -9,11 +9,16 @@ folium-loader:
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
 ---
 
-# Welcome!
+# COVID Transit Ridership
 
-This single-page website demos how to display visualizations created with altair, hvplot, and folium.
+The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
 
-For examples of how to use markdown to style text, see this [this page](./another-page.html).
+[[chart of ridership changes by month at top 40 transit agencies in 2020]]
+
+However, not all agencies have been affected equally. Some agencies have different temporal patterns, such as not plummeting until the second wave in July or making a stronger recovery in the fall. Other differences relate to the magnitude of ridership losses: some agencies have not seen ridership plummet quite as much as other. In this project, I use clustering analysis to identify agencies that might have experienced similar ridership patterns throughout the pandemic. 
+
+I see this as interesting in two ways. Firstly as an exploratory exercise to understand the ways in which different transit agencies have fared. This general understanding of the different experiences of transit providers could help inform what will happen in the future. After experiencing such staggering ridership losses, it remains unclear if transit agencies will be able to maintain the same level of service they operated before the pandemic. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40% 
+
 
 # Example: Embedding Altair & Hvplot Charts
 
