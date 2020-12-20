@@ -11,21 +11,31 @@ folium-loader:
 
 <style>
   .figure-caption{
-    font-size: 10px;
+    font-size: 12px;
   }
 </style>
 
 # COVID Transit Ridership
 
 ### The Problem
-The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
+The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
 
 <div id="altair-chart-1"></div>
-<div class='figure-caption'>*2020 Ridership Chart*. Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8x larger than the next closest system, which would make for an uninteresting scale for most other agencies. Source: FTA National Transit Database. </div>
+<div class='figure-caption'><strong>Figure 1.</strong>. Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8 times larger than the next closest system, which distorts the scale of the graph. Source: National Transit Database. </div>
+<br>
 
-However, not all agencies have been affected equally. Some agencies have different temporal patterns, such as not plummeting until the second wave in July or making a stronger recovery in the fall. Other differences relate to the magnitude of ridership losses: some agencies have not seen ridership plummet quite as much as other. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
+However, not all agencies have been effected equally. Some have suffered greater ridership losses than others while some have recovered to a greater extent or at different times. For example, Figure 1 shows that Chicago Transit Authority, which once carried 5 million monthly passengers more than LA Metro, has consistently ranked below LA Metro since April. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
 
-I see this as interesting in two ways. Firstly as an exploratory exercise to understand the ways in which different transit agencies have fared. This general understanding could help us predict what will happen in the future. After experiencing such staggering ridership losses, it remains unclear if transit agencies will be able to maintain the same level of service they operated before the pandemic. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. 
+This analysis offers two potential insights. Clustering can help us understand the differences between transit agencies. Agencies with lesser drops in ridership may draw more from essential workers or reside in regions that have sustained higher levels of travel activity during the pandemic. These differences may prove to be informative once transit agencies are forced to make long-term decisions in response to the pandemic.After experiencing such staggering ridership losses, some agencies may need to make service cuts. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. The idea behind my clustering analysis is that agencies with similar patterns of ridership changes form a group of peer agencies and may make similar service changes as they cope with these challenging circumstances. This could be useful to transit planners as they look for examples from peer agencies or to transit advocates seeking to organize for better service.
+
+## Method
+
+I performed a K-means clustering algorithm on monthly ridership data as reported in the [National Transit Database](https://www.transit.dot.gov/ntd/ntd-data) from the Federal Transit Administration. I analyzed a relative measure, the percent loss in ridership, to facilitate comparisons across agencies regardless of service levels or ridership numbers. I used three such features: 
+- percent change in April ridership
+- percent change in July ridership
+- percent change in October ridership
+
+To account for seasonal ridership variation, each percent change was calculated compared to the same calendar month the previous year. April was chosen since it's the nadir of the data. October is the most recent data available from NTD, and July falls at the halfway point. After clustering, I compare the resulting groups against additional attributes, such as the percent of the budget that comes from fares, to help draw conclusions about possible service changes. 
 
 
 # Example: Embedding Altair & Hvplot Charts
