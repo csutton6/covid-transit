@@ -9,12 +9,19 @@ folium-loader:
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
 ---
 
+<style>
+  .figure-caption{
+    font-size: 10px;
+  }
+</style>
+
 # COVID Transit Ridership
 
+### The Problem
 The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
 
 <div id="altair-chart-1"></div>
-[[chart of ridership changes by month at top 40 transit agencies in 2020]]
+<div class='figure-caption'>*2020 Ridership Chart*. Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8x larger than the next closest system, which would make for an uninteresting scale for most other agencies. Source: FTA National Transit Database. </div>
 
 However, not all agencies have been affected equally. Some agencies have different temporal patterns, such as not plummeting until the second wave in July or making a stronger recovery in the fall. Other differences relate to the magnitude of ridership losses: some agencies have not seen ridership plummet quite as much as other. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
 
