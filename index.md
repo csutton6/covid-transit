@@ -4,7 +4,7 @@ altair-loader:
   altair-chart-1: "charts/covid_lines_1.json"
   altair-chart-2: "charts/first_cluster_chart.json"
 hv-loader:
-  hv-chart-1: ["charts/measlesHvplot.html", "500"] # second argument is the desired height
+  hv-chart-1: ["charts/office_table.html", "400"] # second argument is the desired height
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
@@ -20,7 +20,7 @@ folium-loader:
 
 <br>
 
-## The Problem
+## Introduction
 The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted asfar as 90% below their pre-covid levels.
 
 <div id="altair-chart-1"></div>
@@ -31,7 +31,7 @@ However, not all agencies have been effected equally. Some have suffered greater
 
 This analysis offers two potential insights. Clustering can help us understand the differences between transit agencies. Agencies with lesser drops in ridership may draw more from essential workers or reside in regions that have sustained higher levels of travel activity during the pandemic. These differences may prove to be informative once transit agencies are forced to make long-term decisions in response to the pandemic.After experiencing such staggering ridership losses, some agencies may need to make service cuts. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. The idea behind my clustering analysis is that agencies with similar patterns of ridership changes form a group of peer agencies and may make similar service changes as they cope with these challenging circumstances. This could be useful to transit planners as they look for examples from peer agencies or to transit advocates seeking to organize for better service.
 
-## Method
+## Methods
 
 I performed a K-means clustering algorithm on monthly ridership data as reported in the [National Transit Database](https://www.transit.dot.gov/ntd/ntd-data) from the Federal Transit Administration. I analyzed a relative measure, the percent loss in ridership, to facilitate comparisons across agencies regardless of service levels or ridership numbers. I used three such features: 
 - percent change in April ridership
@@ -53,6 +53,9 @@ I grouped the data into five clusters, named as follows:
 <br>
 
 ### Cluser 1: Office Workers and Universities
+
+<div id="hv-chart-1"></div>
+
 This cluster suffered the highest ridership losses in 2020. Almost all of the commuter rail agencies are in this cluster, including Metro North in New York and Metra in Chicago. Because the ridership of such services tends to draw from suburban office commuters, I named this cluster after office workers. It includes a number of university transit systems. Some city transit agencies, including WMATA and BART fall in this cluster as well. Since they experience similar ridership trends as commuter rail systems, one could conclude that they also draw heavily from office commuters who worked from home during the pandemic. 
 
 ### Struggling legacy systems
@@ -71,9 +74,19 @@ text here
 
 text here
 
+## Map of Clusters
 
+## Clusters by Volume of Ridership
 
+the big agencies are all below
 
+## Clusters by Metro Area
+
+look at new york metro area. see modal differences. commuter rail vs heavy rail vs bus vs not in other two categories
+
+## Demand Response vs Fixed Transit
+
+## Fare Reliance
 
 # Example: Embedding Altair & Hvplot Charts
 
