@@ -9,6 +9,7 @@ hv-loader:
   hv-chart-1: ["charts/office_table_2.html", "400"] # second argument is the desired height
   hv-chart-2: ["charts/cluster_table.html", "350"]
   hv-chart-3: ['charts/legacy_table.html', "400"]
+  hv-chart-4: ['charts/bus_driven_table.html', "400"]
 
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
@@ -92,18 +93,26 @@ The two highest performing clusters, *Small and Essential* and *Small and Growin
 ### Cluser 1: Office Workers and Universities
 
 <div id="hv-chart-1"></div>
-<div class='figure-caption'><strong>Figure 4.</strong> All agencies in Cluster 1. Default sorting is according to volume of October 2020 ridership.</div>
+
+<div class='figure-caption'><strong>Figure 4.</strong> All agencies in Cluster 1. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
+<br>
 
 This cluster suffered the highest percent ridership losses in 2020. Almost all of the commuter rail agencies are in this cluster, including Metro North in New York and Metra in Chicago. Because the ridership of such services tends to draw from suburban office commuters, I named this cluster after office workers. It includes a number of university transit systems. Some city transit agencies, including WMATA and BART fall in this cluster as well. Since they experience similar ridership trends as commuter rail systems, one could conclude that they also draw heavily from office commuters who worked from home during the pandemic. 
 
 ### Struggling Legacy Systems
 <div id="hv-chart-3"></div>
-<div class='figure-caption'><strong>Figure 5.</strong> All agencies in Cluster 2. Default sorting is according to volume of October 2020 ridership.</div>
 
-This category includes many of the transit agencies with the highest ridership in the U.S., such as New York's MTA, Chicago's CTA, and Boston's MBTA. This category contains the bulk of the legacy systems, i.e. the heavy rail systems that were built in the U.S. before the 1960s. 
+<div class='figure-caption'><strong>Figure 5.</strong> All agencies in Cluster 2. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
+<br>
+
+This category includes many of the transit agencies with the highest ridership in the U.S., such as New York's MTA, Chicago's CTA, and Boston's MBTA. This category contains the bulk of the legacy systems, i.e. the heavy rail systems that were built in the U.S. before the 1960s, though there are many agencies without heavy rail as well. The fact that these systems performed better than *Office Workers and Universities* suggests that they draw from a more diverse ridership pool and have more riders who continued to need or want transit during the pandemic. However, they still suffered great losses. 
+
 ### Bus-Driven Recovery
+<div id='hv-chart-4'></div>
+<div class='figure-caption'><strong>Figure 6.</strong> All agencies in Cluster 3. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
+<br>
 
-text here
+
 
 ### Small and Essential 
 
