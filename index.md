@@ -17,8 +17,9 @@ folium-loader:
 
 # COVID Transit Ridership
 
+<br>
 
-### The Problem
+## The Problem
 The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted asfar as 90% below their pre-covid levels.
 
 <div id="altair-chart-1"></div>
