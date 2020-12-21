@@ -7,6 +7,7 @@ altair-loader:
 
 hv-loader:
   hv-chart-1: ["charts/office_table_2.html", "400"] # second argument is the desired height
+  hv-chart-2: ["charts/cluster_table.html", "350"]
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
@@ -70,11 +71,16 @@ I grouped the data into five clusters, named as follows:
 
 We see that most agencies experienced ridership losses during the pandemic, with the majority having lost more than 40% in April. Many agencies also recovered slightly by October, and a few small operators experienced growth in 2020.
 
+<div id='hv-chart-2'></div>
+
+Comparing percent ridership losses, *Office Workers and Universities* suffered the most, losing 94% of ridership in April and only recovering to an 86% loss by October. As Cluster ID increases, the percent loss in ridership becomes less severe during all 3 months under comparison. 
+
+
 <div id='altair-chart-3'></div>
 <div class='figure-caption'><strong>Figure 3.</strong> Ridership by cluster in selected months of 2019 and 2020. Each column represents the mean of the ridership at every ageny in the cluster for that month.</div>
 <br>
 
-The two highest performing clusters, *Small and Essential* and *Small and Growing*, are comprised of agencies with much smaller ridership, both before and after the pandmic. The *Struggling Legacy Systems* category carried the most riders, followed by *Bus-Driven Recovery* and *Office Workers and Universities*.
+The two highest performing clusters, *Small and Essential* and *Small and Growing*, are comprised of agencies with much smaller passenger levels, both before and after the pandmic. The *Struggling Legacy Systems* category carried the most riders, followed by *Bus-Driven Recovery* and *Office Workers and Universities*.
 
 
 ### Cluser 1: Office Workers and Universities
