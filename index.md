@@ -3,6 +3,8 @@ layout: default
 altair-loader:
   altair-chart-1: "charts/covid_lines_1.json"
   altair-chart-2: "charts/first_cluster_chart.json"
+  altair-chart-3: "charts/ridership_byCluster.json"
+
 hv-loader:
   hv-chart-1: ["charts/office_table.html", "400"] # second argument is the desired height
 folium-loader:
@@ -50,12 +52,12 @@ I grouped the data into five clusters, named as follows:
 
 <div id="altair-chart-2"></div>
 <div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
-<br>
+
+<div id='altair-chart-3'></div>
 
 ### Cluser 1: Office Workers and Universities
 
 <div id="hv-chart-1"></div>
-
 This cluster suffered the highest ridership losses in 2020. Almost all of the commuter rail agencies are in this cluster, including Metro North in New York and Metra in Chicago. Because the ridership of such services tends to draw from suburban office commuters, I named this cluster after office workers. It includes a number of university transit systems. Some city transit agencies, including WMATA and BART fall in this cluster as well. Since they experience similar ridership trends as commuter rail systems, one could conclude that they also draw heavily from office commuters who worked from home during the pandemic. 
 
 ### Struggling legacy systems
