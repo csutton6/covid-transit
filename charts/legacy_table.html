@@ -1,0 +1,556 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>legacy_table</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, .panel-df th, .panel-df td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .panel-widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js" integrity="sha384-kLr4fYcqcSpbuI95brIH3vnnYCquzzSxHPU6XGQCIkQRGJwhg0StNbj1eegrHs12" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.1.1.min.js" integrity="sha384-xIGPmVtaOm+z0BqfSOMn4lOR6ciex448GIKG4eE61LsAvmGj48XcMQZtKcE/UXZe" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.1.1.min.js" integrity="sha384-Dc9u1wF/0zApGIWoBbH77iWEHtdmkuYWG839Uzmv8y8yBLXebjO9ZnERsde5Ln/P" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="35677db4-f1a7-443b-9e92-6ce1681b8f78" data-root-id="1512"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1556">
+          {"2a861722-fe51-4135-b6f3-782c50c515c3":{"roots":{"references":[{"attributes":{"margin":[5,5,5,5],"name":"HSpacer02576","sizing_mode":"stretch_width"},"id":"1513","type":"Spacer"},{"attributes":{"editor":{"id":"1522"},"field":"metro_area","formatter":{"id":"1521"},"title":"metro_area"},"id":"1523","type":"TableColumn"},{"attributes":{},"id":"1517","type":"StringEditor"},{"attributes":{},"id":"1522","type":"StringEditor"},{"attributes":{},"id":"1515","type":"Selection"},{"attributes":{"editor":{"id":"1517"},"field":"agency","formatter":{"id":"1516"},"title":"agency"},"id":"1518","type":"TableColumn"},{"attributes":{"data":{"agency":["MTA New York City Transit","Chicago Transit Authority","Massachusetts Bay Transportation Authority","Southeastern Pennsylvania Transportation Authority","New Jersey Transit Corporation","Denver Regional Transportation District","Metro Transit","Port Authority of Allegheny County","Alameda-Contra Costa Transit District","Utah Transit Authority","Santa Clara Valley Transportation Authority","Pace - Suburban Bus Division","City of Detroit ","City of Charlotte North Carolina","Sacramento Regional Transit District","Montgomery County, Maryland","New York City Department of Transportation","City of Los Angeles","Champaign-Urbana Mass Transit District","Capital Area Transportation Authority","City of Santa Monica","City of El Paso","New Orleans Regional Transit Authority","City of Gainesville, FL","Pioneer Valley Transit Authority","Interurban Transit Partnership","San Mateo County Transit District","Omnitrans","Central New York Regional Transportation Authority","North County Transit District","Riverside Transit Agency","Ames Transit Agency","Santa Barbara Metropolitan Transit District","Staten Island Rapid Transit Operating Authority","Orange-Newark-Elizabeth, Inc.","New York City Economic Development Corporation","Greater Lafayette Public Transportation Corporation","City of Lubbock","City of Fort Collins","City of Montebello","South Florida Regional Transportation Authority","Metropolitan Council","City of Culver City","University of Iowa","Access Services","Mass Transportation Authority","Bloomington Public Transportation Corporation","Monterey-Salinas Transit","Central Contra Costa Transit Authority","Denton County Transportation Authority","Potomac and Rappahannock Transportation Commission","Pace-Suburban Bus Division, ADA Paratransit Services","Chatham Area Transit Authority","City of Alexandria","San Joaquin Regional Transit District","City of Gardena","Central County Transportation Authority","Marin County Transit District","Brockton Area Transit Authority","Birmingham-Jefferson County Transit Authority","Erie Metropolitan Transit Authority","Antelope Valley Transit Authority","City of Shreveport","Laredo Transit Management, Inc.","Williamsburg Area Transit Authority","Toledo Area Regional Transit Authority","City of Rochester, Minnesota","Merrimack Valley Regional Transit Authority","County of Maui","Cache Valley Transit District","City of Iowa City","St. Cloud Metropolitan Transit Commission","City of Kenosha","Portage Area Regional Transportation Authority","City of Santa Rosa","City of Waco","City of Brownsville ","City of Norwalk ","City of DeKalb","Central Florida Commuter Rail","Lowell Regional Transit Authority","Blue Water Area Transportation Commission","City of Cedar Rapids","City of Lawrence","City of Green Bay","Solano County Transit","Western Contra Costa Transit Authority","Lakeland Area Mass Transit District","City of Rome ","Butte County Association of Governments","Yolo County Transportation District","County of Lackawanna Transit System","Cape Cod Regional Transit Authority","City of Clemson","Napa Valley Transportation Authority","Rides Mass Transit District","MetroWest Regional Transit Authority","Lower Rio Grande Valley Development Council","City of Fairfield, California","Greater Attleboro-Taunton Regional Transit Authority","Butler County Regional Transit Authority","County of Sonoma ","Imperial County Transportation Commission","City of Santa Fe","City of Santa Maria","Ventura County Transportation Commission","Ms Coast Transportation Authority","County of Howard","Johnson County Kansas","Westmoreland County ","Metropolitan Transportation Commission","City of Coralville","City of Nashua","Bay County Transportation Planning Organization","Fort Bend County, Texas","Great Falls Transit District","Cooperative Alliance for Seacoast Transportation","Lake Erie Transportation Commission","City of Redondo Beach","City of Arlington","City of Petaluma","City of Fort Lauderdale","River Bend Transit","Anne Arundel County","Transit Authority of Central Kentucky","Riverside County Transportation Commission","City of Long Beach","Denver Regional Council of Governments","Ozaukee County ","Pomona Valley Transportation Authority","Central Indiana Regional Transportation Authority ","Putnam County ","Northwest Alabama Council of Local Governments","County of Douglas","Flagler County Public Transportation","County of Atlantic","Baldwin County Commission","Cumberland County","Mid-Ohio Regional Planning Commission","Western Maine Transportation Services, Inc.","City of La Mirada ","City of Maple Grove"],"metro_area":["New York-Newark, NY-NJ-CT","Chicago, IL-IN","Boston, MA-NH-RI","Philadelphia, PA-NJ-DE-MD","New York-Newark, NY-NJ-CT","Denver-Aurora, CO","Minneapolis-St. Paul, MN-WI","Pittsburgh, PA","San Francisco-Oakland, CA","Salt Lake City-West Valley City, UT","San Jose, CA","Chicago, IL-IN","Detroit, MI","Charlotte, NC-SC","Sacramento, CA","Washington, DC-VA-MD","New York-Newark, NY-NJ-CT","Los Angeles-Long Beach-Anaheim, CA","Champaign, IL","Lansing, MI","Los Angeles-Long Beach-Anaheim, CA","El Paso, TX-NM","New Orleans, LA","Gainesville, FL","Springfield, MA-CT","Grand Rapids, MI","San Francisco-Oakland, CA","Riverside-San Bernardino, CA","Syracuse, NY","San Diego, CA","Riverside-San Bernardino, CA","Ames, IA","Santa Barbara, CA","New York-Newark, NY-NJ-CT","New York-Newark, NY-NJ-CT","New York-Newark, NY-NJ-CT","Lafayette, IN","Lubbock, TX","Fort Collins, CO","Los Angeles-Long Beach-Anaheim, CA","Miami, FL","Minneapolis-St. Paul, MN-WI","Los Angeles-Long Beach-Anaheim, CA","Iowa City, IA","Los Angeles-Long Beach-Anaheim, CA","Flint, MI","Bloomington, IN","Seaside-Monterey, CA","Concord, CA","Denton-Lewisville, TX","Washington, DC-VA-MD","Chicago, IL-IN","Savannah, GA","Washington, DC-VA-MD","Stockton, CA","Los Angeles-Long Beach-Anaheim, CA","Kalamazoo, MI","San Francisco-Oakland, CA","Boston, MA-NH-RI","Birmingham, AL","Erie, PA","Lancaster-Palmdale, CA","Shreveport, LA","Laredo, TX","Williamsburg, VA","Toledo, OH-MI","Rochester, MN","Boston, MA-NH-RI","Kahului, HI","Logan, UT","Iowa City, IA","St. Cloud, MN","Kenosha, WI-IL","Akron, OH","Santa Rosa, CA","Waco, TX","Brownsville, TX","Los Angeles-Long Beach-Anaheim, CA","DeKalb, IL","Orlando, FL","Boston, MA-NH-RI","Port Huron, MI","Cedar Rapids, IA","Lawrence, KS","Green Bay, WI","Vallejo, CA","San Francisco-Oakland, CA","Lakeland, FL","Rome, GA","Chico, CA","Sacramento, CA","Scranton, PA","Barnstable Town, MA","Greenville, SC","Napa, CA","Carbondale, IL","Boston, MA-NH-RI","McAllen, TX","Fairfield, CA","Providence, RI-MA","Cincinnati, OH-KY-IN","Santa Rosa, CA","El Centro-Calexico, CA","Santa Fe, NM","Santa Maria, CA","Oxnard, CA","Gulfport, MS","Baltimore, MD","Kansas City, MO-KS","Pittsburgh, PA","San Francisco-Oakland, CA","Iowa City, IA","Nashua, NH-MA","Panama City, FL","Houston, TX","Great Falls, MT","Dover-Rochester, NH-ME","Monroe, MI","Los Angeles-Long Beach-Anaheim, CA","Dallas-Fort Worth-Arlington, TX","Petaluma, CA","Miami, FL","Davenport, IA-IL","Baltimore, MD","Elizabethtown-Radcliff, KY","Riverside-San Bernardino, CA","New York-Newark, NY-NJ-CT","Denver-Aurora, CO","Milwaukee, WI","Los Angeles-Long Beach-Anaheim, CA","Indianapolis, IN","New York-Newark, NY-NJ-CT","Florence, AL","Atlanta, GA","Palm Coast-Daytona Beach-Port Orange, FL","Atlantic City, NJ","Daphne-Fairhope, AL","Vineland, NJ","Columbus, OH","Lewiston, ME","Los Angeles-Long Beach-Anaheim, CA","Minneapolis-St. Paul, MN-WI"]},"selected":{"id":"1515"},"selection_policy":{"id":"1528"}},"id":"1514","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1513"},{"id":"1526"},{"id":"1532"}],"margin":[0,0,0,0],"name":"Row02572","tags":["embedded"]},"id":"1512","type":"Row"},{"attributes":{},"id":"1521","type":"StringFormatter"},{"attributes":{},"id":"1516","type":"StringFormatter"},{"attributes":{},"id":"1528","type":"UnionRenderers"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer02577","sizing_mode":"stretch_width"},"id":"1532","type":"Spacer"},{"attributes":{"source":{"id":"1514"}},"id":"1527","type":"CDSView"},{"attributes":{"columns":[{"id":"1518"},{"id":"1523"}],"height":300,"reorderable":false,"source":{"id":"1514"},"view":{"id":"1527"},"width":700},"id":"1526","type":"DataTable"}],"root_ids":["1512"]},"title":"Bokeh Application","version":"2.1.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1556').textContent;
+                  var render_items = [{"docid":"2a861722-fe51-4135-b6f3-782c50c515c3","root_ids":["1512"],"roots":{"1512":"35677db4-f1a7-443b-9e92-6ce1681b8f78"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
