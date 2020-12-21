@@ -11,7 +11,7 @@ hv-loader:
   hv-chart-3: ['charts/legacy_table.html', "400"]
   hv-chart-4: ['charts/bus_driven_table.html', "400"]
   hv-chart-5: ['charts/small_essential_table.html', '400']
-  hv-chart-6: ['charts/small_growing_table.html', '400']
+  hv-chart-6: ['charts/small_growing_table_2.html', '400']
 
 
 folium-loader:
