@@ -52,15 +52,26 @@ I performed a K-means clustering algorithm on monthly ridership data as reported
 To account for seasonal ridership variation, each percent change was calculated compared to the same calendar month the previous year. April was chosen since it's the nadir of the data. October is the most recent month available in the NTD, and July falls at the halfway point. After clustering, I compare the resulting groups against additional attributes, such as the percent of the budget that comes from fares, to help draw conclusions about possible service changes. 
 
 ## Clustering
-I grouped the data into five clusters, named as follows: 
-- "Office Workers and Universities"
-- "Struggling Legacy Systems"
-- "Bus-Driven Recovery"
-- "Small and Essential"
-- "Small and Growing"
+I grouped the data into five clusters, named as follows:
+
+| Cluster ID | Name |
+|------------|------|
+|1|Office Workers and Universities|
+|2|Struggling Legacy Systems|
+|3|Bus-Driven Recovery|
+|4|Small and Essential|
+|5|Small and Growing|
+
+- 1: Office Workers and Universities
+- 2: Struggling Legacy Systems
+- "3: Bus-Driven Recovery"
+- "4: Small and Essential"
+- "5: Small and Growing"
 
 <div id="altair-chart-2"></div>
 <div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
+
+
 
 <div id='altair-chart-3'></div>
 
