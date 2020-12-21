@@ -28,7 +28,19 @@ folium-loader:
   }
   #hv-chart-2{
     width: 600px;
-    overflow-x: auto;
+    overflow-y: scroll;
+  }
+  #hv-chart-1{
+    width: 600px;
+    overflow-y: scroll;
+  }
+  #hv-chart-3{
+    width: 600px;
+    overflow-y: scroll;
+  }
+  #hv-chart-4{
+    width: 600px;
+    overflow-y: scroll;
   }
   #altair-chart-3{
     width: 100px;
@@ -105,13 +117,14 @@ This cluster suffered the highest percent ridership losses in 2020. Almost all o
 <div class='figure-caption'><strong>Figure 5.</strong> All agencies in Cluster 2. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
 <br>
 
-This category includes many of the transit agencies with the highest ridership in the U.S., such as New York's MTA, Chicago's CTA, and Boston's MBTA. This category contains the bulk of the legacy systems, i.e. the heavy rail systems that were built in the U.S. before the 1960s, though there are many agencies without heavy rail as well. The fact that these systems performed better than *Office Workers and Universities* suggests that they draw from a more diverse ridership pool and have more riders who continued to need or want transit during the pandemic. However, they still suffered great losses. 
+This category includes many of the transit agencies with the highest ridership in the U.S., such as New York's MTA, Chicago's CTA, and Boston's MBTA. This category contains the bulk of the legacy systems, i.e. the heavy rail systems that were built in the U.S. before the 1960s, though there are many agencies without heavy rail as well. The fact that these systems performed better than *Office Workers and Universities* suggests that they draw from a more diverse ridership pool and have more riders who continued to need or want transit during the pandemic. However, they still suffered great losses. Since many of these cities are areas with dense urban cores, passengers may have more easily been able to substitute walking or biking for their former transit trips. 
 
 ### Bus-Driven Recovery
 <div id='hv-chart-4'></div>
 <div class='figure-caption'><strong>Figure 6.</strong> All agencies in Cluster 3. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
 <br>
 
+This cluster is similar to the previous in that it carries the second-highest average passenger levels, but it is predominated by bus transit systems. Though the agency does have rail, ridership at LA Metro [predominantly draws from its bus lines](http://isotp.metro.net/MetroRidership/Index.aspx). MTA Bus company is also an exclusively bus operator. The systems in this cluster likely draw from essential workers to an even greater extent than the *Struggling Legacy Systems*. A [study in 2018](https://www.its.ucla.edu/2018/01/31/new-report-its-scholars-on-the-cause-of-californias-falling-transit-ridership/) identified that the core of LA Metro's ridership is formed by low-income and immigrant riders without vehicles. The [LA Metro Customer Survey](https://media.metro.net/projects_studies/research/images/infographics/fall_2019__onboard_survey_results_and_trend_report.pdf) also indicates that bus riders have a lower median income than rail riders ($17,975 vs $27,723). If these same trends hold across other cities, we might expect that bus ridership would remain stronger at a time when low-wage hourly workers are more likely to work in-person or rely on public transportation for their trips. MARTA stands out as the largest second-generation transit system in this cluster, suggesting its ridership draws more from essential workers than BART or WMATA. 
 
 
 ### Small and Essential 
