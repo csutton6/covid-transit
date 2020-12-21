@@ -2,6 +2,7 @@
 layout: default
 altair-loader:
   altair-chart-1: "charts/covid_lines_1.json"
+  altair-chart-2: "charts/first_cluster_chart.json"
 hv-loader:
   hv-chart-1: ["charts/measlesHvplot.html", "500"] # second argument is the desired height
 folium-loader:
@@ -38,6 +39,40 @@ I performed a K-means clustering algorithm on monthly ridership data as reported
 - percent change in October ridership
 
 To account for seasonal ridership variation, each percent change was calculated compared to the same calendar month the previous year. April was chosen since it's the nadir of the data. October is the most recent month available in the NTD, and July falls at the halfway point. After clustering, I compare the resulting groups against additional attributes, such as the percent of the budget that comes from fares, to help draw conclusions about possible service changes. 
+
+## Clustering
+I grouped the data into five clusters, named as follows: 
+- "Office Workers and Universities"
+- "Struggling Legacy Systems"
+- "Bus-Driven Recovery"
+- "Small and Essential"
+- "Small and Growing"
+
+<div id="altair-chart-2"></div>
+<div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
+<br>
+
+### Cluser 1: Office Workers and Universities
+This cluster suffered the highest ridership losses in 2020. Almost all of the commuter rail agencies are in this cluster, including Metro North in New York and Metra in Chicago. Because the ridership of such services tends to draw from suburban office commuters, I named this cluster after office workers. It includes a number of university transit systems. Some city transit agencies, including WMATA and BART fall in this cluster as well. Since they experience similar ridership trends as commuter rail systems, one could conclude that they also draw heavily from office commuters who worked from home during the pandemic. 
+
+### Struggling legacy systems
+
+text here
+
+### Bus-Driven Recovery
+
+text here
+
+### Small and Essential 
+
+text here
+
+### Small and Growing
+
+text here
+
+
+
 
 
 # Example: Embedding Altair & Hvplot Charts
