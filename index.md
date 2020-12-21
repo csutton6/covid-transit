@@ -17,10 +17,13 @@ folium-loader:
     font-size: 12px;
   }
   #altair-chart-1{
-    width: 600px;
+    width: 500px;
+  }
+  #altair-chart-2{
+    width: 500px;
   }
   #altair-chart-3{
-    width: 600px;
+    width: 100px;
   }
 </style>
 
