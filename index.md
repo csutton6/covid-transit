@@ -29,18 +29,22 @@ folium-loader:
   #hv-chart-2{
     width: 600px;
     overflow-y: scroll;
+    overflow-x: scroll;
   }
   #hv-chart-1{
     width: 600px;
     overflow-y: scroll;
+    overflow-x: scroll;
   }
   #hv-chart-3{
     width: 600px;
     overflow-y: scroll;
+    overflow-x: scroll;
   }
   #hv-chart-4{
     width: 600px;
     overflow-y: scroll;
+    overflow-x: scroll;
   }
   #altair-chart-3{
     width: 100px;
