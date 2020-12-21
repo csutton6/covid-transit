@@ -1,0 +1,556 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>bus_driven_table</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, .panel-df th, .panel-df td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .panel-widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js" integrity="sha384-kLr4fYcqcSpbuI95brIH3vnnYCquzzSxHPU6XGQCIkQRGJwhg0StNbj1eegrHs12" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.1.1.min.js" integrity="sha384-xIGPmVtaOm+z0BqfSOMn4lOR6ciex448GIKG4eE61LsAvmGj48XcMQZtKcE/UXZe" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.1.1.min.js" integrity="sha384-Dc9u1wF/0zApGIWoBbH77iWEHtdmkuYWG839Uzmv8y8yBLXebjO9ZnERsde5Ln/P" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="d81d8a93-c219-4035-baae-b1301e344694" data-root-id="1589"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1633">
+          {"d56aab23-4776-4feb-a981-7df0f2433680":{"roots":{"references":[{"attributes":{"editor":{"id":"1594"},"field":"agency","formatter":{"id":"1593"},"title":"agency"},"id":"1595","type":"TableColumn"},{"attributes":{"data":{"agency":["Los Angeles County Metropolitan Transportation Authority ","MTA Bus Company","Metropolitan Atlanta Rapid Transit Authority","Maryland Transit Administration","San Diego Metropolitan Transit System","Metropolitan Transit Authority of Harris County, Texas","County of Miami-Dade ","Dallas Area Rapid Transit","Regional Transportation Commission of Southern Nevada","City and County of Honolulu","Orange County Transportation Authority","VIA Metropolitan Transit","City of Phoenix Public Transit Department ","Bi-State Development Agency of the Missouri-Illinois Metropolitan District","Capital Metropolitan Transportation Authority","The Greater Cleveland Regional Transit Authority","Milwaukee County","Niagara Frontier Transportation Authority","Westchester County","Broward County Board of County Commissioners","Long Beach Transit","County of Nassau","Central Florida Regional Transportation Authority","Central Ohio Transit Authority","Rhode Island Public Transit Authority","Capital District Transportation Authority","Southwest Ohio Regional Transit Authority","Regional Public Transportation Authority","Valley Metro Rail, Inc.","Regional Transit Service - Monroe County","Hillsborough Area Regional Transit Authority","Kansas City Area Transportation Authority","Foothill Transit","Transportation District Commission of Hampton Roads","Southern California Regional Rail Authority","Jacksonville Transportation Authority","City of Fresno","Transit Authority of River City","Indianapolis and Marion County Public Transportation","Greater Dayton Regional Transit Authority","Metropolitan Transit Authority","City of Albuquerque","Fairfax County, VA","Delaware Transit Corporation","City of Raleigh","Golden Empire Transit District","Fort Worth Transportation Authority","City of Memphis","METRO Regional Transit Authority","Greater Bridgeport Transit Authority","Lexington Transit Authority","Corpus Christi Regional Transportation Authority","South Central Transit Authority","Des Moines Area Regional Transit Authority","Suffolk County ","SunLine Transit Agency","Capital Area Transit System","City of Torrance","Gold Coast Transit District","City of Greensboro ","Transit Authority of Omaha","Charleston Area Regional Transportation Authority","Northern Arizona Intergovernmental Public Transportation Authority","Transit Authority of Northern Kentucky","Rock Island County Metropolitan Mass Transit District","City of Colorado Springs","Arlington County, Virginia","City of Lincoln","Southeastern Regional Transit Authority","Green Mountain Transit Authority","Lee County","Chattanooga Area Regional Transportation Authority","Rock Region Metropolitan Transit Authority","City of Santa Clarita","Cobb County","City of Modesto ","Victor Valley Transit Authority","Madison County Transit District","Cumberland Dauphin-Harrisburg Transit Authority","Stark Area Regional Transit Authority","Metropolitan Tulsa Transit Authority","Greater Portland Transit District","Central Pennsylvania Transportation Authority","Broome County","Jefferson Parish","Greater Roanoke Transit Company","Research Triangle Regional Public Transportation Authority","The Eastern Contra Costa Transit Authority","Cape Fear Public Transportation Authority","City of Pasadena","South Bend Public Transportation Corporation","City of Fargo","Rockford Mass Transit District","Gwinnett County Board of Commissioners","Kanawha Valley Regional Transportation Authority","Western Reserve Transit Authority","Missoula Urban Transportation District","City of Baltimore","Norwalk Transit District","Muncie Indiana Transit System","Escambia County Board of County Commissioners, FL","City of Wichita ","Metropolitan Evansville Transit System","City of Visalia  ","City of Springfield","Montachusett Regional Transit Authority","County of Rockland ","City of Appleton","San Luis Obispo Regional Transit Authority","Transit Joint Powers Authority for Merced County","City of Sioux City","City of La Crosse","Dutchess County","City of Mobile","City of Waukesha ","Yuba-Sutter Transit Authority","City of Eau Claire","Su Tran LLC dba: Sioux Area Metro","Gary Public Transportation Corporation","City of Oshkosh, Wisconsin","County Commissioners of Charles County, MD","Beaver County Transit Authority","City of Pueblo","Laketran","Connecticut Department of Transportation -CTTRANSIT New Britain","Housatonic Area Regional Transit","Piedmont Authority for Regional Transportation","City of Fairfax","Redding Area Bus Authority","City of Montgomery","Yuma County Intergovernmental Public Transportation Authority","County of Placer","Private Transportation Corporation","Berkshire Regional Transit Authority","Greater Hartford Transit District","City of Jackson Transportation Authority","Hill Country Transit District","Lake County Board of County Commissioners","City of Kokomo","Monsey New Square Trails Corporation","Brazos Transit District","Connecticut Department of Transportation - CTTransit New Britain -Dattco.","The Tri-County Council for the Lower Eastern Shore of Maryland","County of Lebanon Transit Authority","Tampa Bay Area Regional Transit Authority","Monroe County Transportation  Authority","JAUNT, Inc.","Cities Area Transit","Milford Transit District","Concho Valley Transit District","Washington County Transportation Authority","Mid Mon Valley Transit Authority","City of Terre Haute ","STAR Transit","City of Turlock","County of Fayette","Greater New Haven Transit District","Western Piedmont Regional Transit Authority","Cape Ann Transportation Authority","Wake County","Borough of Pottstown","City of Glendale ","Santee Wateree Regional Transportation Authority","County of Washington","Buncombe County","Knoxville-Knox County Community Action Committee","First Tennessee Human Resource Agency","Spartanburg Regional Health Services, Inc.","City of Loveland, Colorado","Charlotte County Government","Licking County, Ohio","New Mexico Department of Transportation","Jackson County Mass Transit District","Regional Planning Commission of Greater Birmingham","Delaware County Transit Board","LINK Hendricks County"],"metro_area":["Los Angeles-Long Beach-Anaheim, CA","New York-Newark, NY-NJ-CT","Atlanta, GA","Baltimore, MD","San Diego, CA","Houston, TX","Miami, FL","Dallas-Fort Worth-Arlington, TX","Las Vegas-Henderson, NV","Urban Honolulu, HI","Los Angeles-Long Beach-Anaheim, CA","San Antonio, TX","Phoenix-Mesa, AZ","St. Louis, MO-IL","Austin, TX","Cleveland, OH","Milwaukee, WI","Buffalo, NY","New York-Newark, NY-NJ-CT","Miami, FL","Los Angeles-Long Beach-Anaheim, CA","New York-Newark, NY-NJ-CT","Orlando, FL","Columbus, OH","Providence, RI-MA","Albany-Schenectady, NY","Cincinnati, OH-KY-IN","Phoenix-Mesa, AZ","Phoenix-Mesa, AZ","Rochester, NY","Tampa-St. Petersburg, FL","Kansas City, MO-KS","Los Angeles-Long Beach-Anaheim, CA","Virginia Beach, VA","Los Angeles-Long Beach-Anaheim, CA","Jacksonville, FL","Fresno, CA","Louisville/Jefferson County, KY-IN","Indianapolis, IN","Dayton, OH","Nashville-Davidson, TN","Albuquerque, NM","Washington, DC-VA-MD","Philadelphia, PA-NJ-DE-MD","Raleigh, NC","Bakersfield, CA","Dallas-Fort Worth-Arlington, TX","Memphis, TN-MS-AR","Akron, OH","Bridgeport-Stamford, CT-NY","Lexington-Fayette, KY","Corpus Christi, TX","Lancaster, PA","Des Moines, IA","New York-Newark, NY-NJ-CT","Indio-Cathedral City, CA","Baton Rouge, LA","Los Angeles-Long Beach-Anaheim, CA","Oxnard, CA","Greensboro, NC","Omaha, NE-IA","Charleston-North Charleston, SC","Flagstaff, AZ","Cincinnati, OH-KY-IN","Davenport, IA-IL","Colorado Springs, CO","Washington, DC-VA-MD","Lincoln, NE","New Bedford, MA","Burlington, VT","Cape Coral, FL","Chattanooga, TN-GA","Little Rock, AR","Santa Clarita, CA","Atlanta, GA","Modesto, CA","Victorville-Hesperia, CA","St. Louis, MO-IL","Harrisburg, PA","Canton, OH","Tulsa, OK","Portland, ME","York, PA","Binghamton, NY-PA","New Orleans, LA","Roanoke, VA","Durham, NC","Antioch, CA","Wilmington, NC","Los Angeles-Long Beach-Anaheim, CA","South Bend, IN-MI","Fargo, ND-MN","Rockford, IL","Atlanta, GA","Charleston, WV","Youngstown, OH-PA","Missoula, MT","Baltimore, MD","Bridgeport-Stamford, CT-NY","Muncie, IN","Pensacola, FL-AL","Wichita, KS","Evansville, IN-KY","Visalia, CA","Springfield, MO","Leominster-Fitchburg, MA","New York-Newark, NY-NJ-CT","Appleton, WI","San Luis Obispo, CA","Merced, CA","Sioux City, IA-NE-SD","La Crosse, WI-MN","Poughkeepsie-Newburgh, NY-NJ","Mobile, AL","Milwaukee, WI","Yuba City, CA","Eau Claire, WI","Sioux Falls, SD","Chicago, IL-IN","Oshkosh, WI","Waldorf, MD","Pittsburgh, PA","Pueblo, CO","Cleveland, OH","Hartford, CT","Danbury, CT-NY","Greensboro, NC","Washington, DC-VA-MD","Redding, CA","Montgomery, AL","Yuma, AZ-CA","Sacramento, CA","New York-Newark, NY-NJ-CT","Pittsfield, MA","Hartford, CT","Jackson, MI","Killeen, TX","Leesburg-Eustis-Tavares, FL","Kokomo, IN","New York-Newark, NY-NJ-CT","College Station-Bryan, TX","Hartford, CT","Salisbury, MD-DE","Lebanon, PA","Tampa-St. Petersburg, FL","East Stroudsburg, PA-NJ","Charlottesville, VA","Grand Forks, ND-MN","Bridgeport-Stamford, CT-NY","San Angelo, TX","Pittsburgh, PA","Monessen-California, PA","Terre Haute, IN","Dallas-Fort Worth-Arlington, TX","Turlock, CA","Uniontown-Connellsville, PA","New Haven, CT","Hickory, NC","Boston, MA-NH-RI","Raleigh, NC","Pottstown, PA","Phoenix-Mesa, AZ","Sumter, SC","Milwaukee, WI","Asheville, NC","Knoxville, TN","Johnson City, TN","Spartanburg, SC","Fort Collins, CO","North Port-Port Charlotte, FL","Newark, OH","Las Cruces, NM","Carbondale, IL","Birmingham, AL","Columbus, OH","Indianapolis, IN"]},"selected":{"id":"1592"},"selection_policy":{"id":"1605"}},"id":"1591","type":"ColumnDataSource"},{"attributes":{},"id":"1594","type":"StringEditor"},{"attributes":{"columns":[{"id":"1595"},{"id":"1600"}],"height":300,"reorderable":false,"source":{"id":"1591"},"view":{"id":"1604"},"width":700},"id":"1603","type":"DataTable"},{"attributes":{},"id":"1598","type":"StringFormatter"},{"attributes":{},"id":"1605","type":"UnionRenderers"},{"attributes":{"children":[{"id":"1590"},{"id":"1603"},{"id":"1609"}],"margin":[0,0,0,0],"name":"Row02737","tags":["embedded"]},"id":"1589","type":"Row"},{"attributes":{"source":{"id":"1591"}},"id":"1604","type":"CDSView"},{"attributes":{},"id":"1593","type":"StringFormatter"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer02742","sizing_mode":"stretch_width"},"id":"1609","type":"Spacer"},{"attributes":{},"id":"1592","type":"Selection"},{"attributes":{"editor":{"id":"1599"},"field":"metro_area","formatter":{"id":"1598"},"title":"metro_area"},"id":"1600","type":"TableColumn"},{"attributes":{},"id":"1599","type":"StringEditor"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer02741","sizing_mode":"stretch_width"},"id":"1590","type":"Spacer"}],"root_ids":["1589"]},"title":"Bokeh Application","version":"2.1.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1633').textContent;
+                  var render_items = [{"docid":"d56aab23-4776-4feb-a981-7df0f2433680","root_ids":["1589"],"roots":{"1589":"d81d8a93-c219-4035-baae-b1301e344694"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
