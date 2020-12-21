@@ -7,7 +7,7 @@ altair-loader:
 
 hv-loader:
   hv-chart-1: ["charts/office_table_2.html", "400"] # second argument is the desired height
-  hv-chart-2: ["charts/cluster_table.html", "350"]
+  hv-chart-2: ["charts/cluster_table_2.html", "350"]
   hv-chart-3: ['charts/legacy_table.html', "400"]
   hv-chart-4: ['charts/bus_driven_table.html', "400"]
 
@@ -82,7 +82,7 @@ I grouped the data into five clusters, named as follows:
 |4|Small and Essential|
 |5|Small and Growing|
 
-
+<br>
 <div id="altair-chart-2"></div>
 <div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
 
