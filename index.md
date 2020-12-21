@@ -2,7 +2,7 @@
 layout: default
 altair-loader:
   altair-chart-1: "charts/covid_lines_1.json"
-  altair-chart-2: "charts/first_cluster_chart.json"
+  altair-chart-2: "charts/first_cluster_chart_wider.json"
   altair-chart-3: "charts/ridership_byCluster.json"
 
 hv-loader:
@@ -62,18 +62,20 @@ I grouped the data into five clusters, named as follows:
 |4|Small and Essential|
 |5|Small and Growing|
 
-- 1: Office Workers and Universities
-- 2: Struggling Legacy Systems
-- "3: Bus-Driven Recovery"
-- "4: Small and Essential"
-- "5: Small and Growing"
 
 <div id="altair-chart-2"></div>
 <div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
 
+<br>
 
+We see that most agencies experienced ridership losses during the pandemic, with the majority having lost more than 40% in April. Many agencies also recovered slightly by October, and a few small operators experienced growth in 2020.
 
 <div id='altair-chart-3'></div>
+<div class='figure-caption'><strong>Figure 3.</strong> Ridership by cluster in selected months of 2019 and 2020. Each column represents the mean of the ridership at every ageny in the cluster for that month.</div>
+<br>
+
+The two highest performing clusters, **Small and Essential** and **Small and Growing**, are comprised of agencies with much smaller ridership, both before and after the pandmic. The **Struggling Legacy Systems** category carries the most riders, followed by **Bus-Driven Recovery** and **Office Workers and Universities**.
+
 
 ### Cluser 1: Office Workers and Universities
 
