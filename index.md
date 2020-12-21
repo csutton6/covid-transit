@@ -74,7 +74,7 @@ We see that most agencies experienced ridership losses during the pandemic, with
 <div class='figure-caption'><strong>Figure 3.</strong> Ridership by cluster in selected months of 2019 and 2020. Each column represents the mean of the ridership at every ageny in the cluster for that month.</div>
 <br>
 
-The two highest performing clusters, **Small and Essential** and **Small and Growing**, are comprised of agencies with much smaller ridership, both before and after the pandmic. The **Struggling Legacy Systems** category carries the most riders, followed by **Bus-Driven Recovery** and **Office Workers and Universities**.
+The two highest performing clusters, *Small and Essential* and *Small and Growing*, are comprised of agencies with much smaller ridership, both before and after the pandmic. The *Struggling Legacy Systems* category carries the most riders, followed by *Bus-Driven Recovery* and *Office Workers and Universities*.
 
 
 ### Cluser 1: Office Workers and Universities
