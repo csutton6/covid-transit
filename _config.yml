@@ -1,6 +1,6 @@
-title: MUSA 550
-logo: /assets/img/logo.png
-description: Geospatial Data Science in Python.
+title: COVID Transit Ridership
+logo: /assets/img/Chicago_El_(1454110066).jpg
+description: A clustering analysis of ridership changes among U.S. transit operators in 2020.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal

@@ -17,11 +17,12 @@ folium-loader:
 
 # COVID Transit Ridership
 
+
 ### The Problem
-The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted a far as 90% below their pre-covid levels.
+The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted asfar as 90% below their pre-covid levels.
 
 <div id="altair-chart-1"></div>
-<div class='figure-caption'><strong>Figure 1.</strong>. Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8 times larger than the next closest system, which distorts the scale of the graph. Source: National Transit Database. </div>
+<div class='figure-caption'><strong>Figure 1.</strong> Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8 times larger than the next closest system, which distorts the scale of the graph. Source: National Transit Database. </div>
 <br>
 
 However, not all agencies have been effected equally. Some have suffered greater ridership losses than others while some have recovered to a greater extent or at different times. For example, Figure 1 shows that Chicago Transit Authority, which once carried 5 million monthly passengers more than LA Metro, has consistently ranked below LA Metro since April. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
@@ -35,7 +36,7 @@ I performed a K-means clustering algorithm on monthly ridership data as reported
 - percent change in July ridership
 - percent change in October ridership
 
-To account for seasonal ridership variation, each percent change was calculated compared to the same calendar month the previous year. April was chosen since it's the nadir of the data. October is the most recent data available from NTD, and July falls at the halfway point. After clustering, I compare the resulting groups against additional attributes, such as the percent of the budget that comes from fares, to help draw conclusions about possible service changes. 
+To account for seasonal ridership variation, each percent change was calculated compared to the same calendar month the previous year. April was chosen since it's the nadir of the data. October is the most recent month available in the NTD, and July falls at the halfway point. After clustering, I compare the resulting groups against additional attributes, such as the percent of the budget that comes from fares, to help draw conclusions about possible service changes. 
 
 
 # Example: Embedding Altair & Hvplot Charts
