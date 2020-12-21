@@ -16,6 +16,12 @@ folium-loader:
   .figure-caption{
     font-size: 12px;
   }
+  #altair-chart-1{
+    width: 500px;
+  }
+  #altair-chart-3{
+    width: 500px;
+  }
 </style>
 
 # COVID Transit Ridership
