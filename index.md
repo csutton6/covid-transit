@@ -7,7 +7,7 @@ altair-loader:
 
 hv-loader:
   hv-chart-1: ["charts/office_table_2.html", "400"] # second argument is the desired height
-  hv-chart-2: ["charts/cluster_table.html", "350"]
+  hv-chart-2: ["charts/cluster_table.html", "350", "600"]
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
@@ -22,6 +22,10 @@ folium-loader:
   }
   #altair-chart-2{
     width: 500px;
+  }
+  #hv-chart-2{
+    width: 600px;
+    overflow-x: auto;
   }
   #altair-chart-3{
     width: 100px;
