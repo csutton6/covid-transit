@@ -52,10 +52,10 @@ folium-loader:
     width: 600px;
   }
   #hv-chart-7{
-    width: 500px;
+    width: 400px;
   }
   #hv-chart-8{
-    width: 500px;
+    width: 400px;
   }
 </style>
 
