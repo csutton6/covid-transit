@@ -1,4 +1,5 @@
-# github-pages-single-page-starter
+# COVID Transit Ridership
+## Kate Sutton | MUSA 550
 
 A template for including data visualizations in a Jekyll-powered, single-page blog with Github Pages.
 
