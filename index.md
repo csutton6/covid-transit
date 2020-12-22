@@ -12,6 +12,9 @@ hv-loader:
   hv-chart-4: ['charts/bus_driven_table.html', "400"]
   hv-chart-5: ['charts/small_essential_table.html', '400']
   hv-chart-6: ['charts/small_growing_table_2.html', '400']
+  hv-chart-7: ['charts/cluster_byRidership.html', '400']
+  hv-chart-8: ['charts/cluster_byMetro.html', '400']
+
 
 
 folium-loader:
@@ -144,16 +147,24 @@ The last cluster is very small, comprising only 6 agencies, almost all of which 
 
 **U.S. Transit Clusters Map**
 <div id="folium-chart-3"></div>
+<div class='figure-caption'><strong>Figure 9.</strong> Map of transit agencies by cluster. Colored according to cluster (1=teal, 2=orange, 3=purple, 4=magenta, 5=green).</div>
+<br>
 
 
 ## Clusters by Volume of Ridership
+<div id='hv-chart-7'></div>
+<div class='figure-caption'><strong>Figure 10.</strong> Chart of clusters grouped by ridership category. Ridership category calculated based on October 2020 ridership.</div>
+<br>
 
-the big agencies are all below
+We see that all large agencies fall into the bottom three clusters, suggesting that none of the transit operators that carry the most passengers will emerge from the pandemic unscathed. 
 
 ## Clusters by Metro Area
+<div id='hv-chart-8'></div>
+<div class='figure-caption'><strong>Figure 11.</strong> Chart of clusters grouped by metro area. </div>
+<br>
 
-look at new york metro area. see modal differences. commuter rail vs heavy rail vs bus vs not in other two categories
+To find a transit agency in your city, filter by metro area. 
 
-## Demand Response vs Fixed Transit
 
 ## Fare Reliance
+
