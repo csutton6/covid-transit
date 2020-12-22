@@ -1,17 +1,19 @@
 # COVID Transit Ridership
 ## Kate Sutton | MUSA 550
 
-A template for including data visualizations in a Jekyll-powered, single-page blog with Github Pages.
-
-The template uses the Minimal Jekyll theme: more details on this theme can be found [here](https://github.com/pages-themes/minimal).
+I created a single-page blog to explore transit ridership during covid. I did a clustering analysis because I wanted to understand which agencies have fared similarly in regards to ridership. The blog itself is very detailed, so I'll provide a simple overview here. 
 
 ## Steps
 
-- Click on the "Use this template" button to create a new repository.
-- Choose a new name for your new repository
-- Go to the Settings section of your new repository, scroll down to the "Github Pages" section, and select the "Master" as the branch to be used for GitHub pages. This will automatically build the website.
-- Customize your site
-  - Enter your site name, description, etc by editing the `_config.yml` file.
-  - You can also upload and specify your own file
-- Make changes to the `index.md` file — this is the main page of your website!
-  - Useful resource: [Markdown Cheatsheet](http://www.jekyllnow.com/Markdown-Style-Guide/)
+- download data from National Transit Database on monthly ridership and budget
+- clean data in a notebook
+- calculate percent change columns for April, October, and July
+- perform a K-means clustering with 5 clusters on those 3 percent change columns
+- explore descriptive statistics to name clusters
+- explore the relationship between clusters and reliance on fare revenue 
+- add charts and a map of the clusters to the blog
+
+Though I did the elbow method to select the number of clusters, it did not have a strong elbow. I ultimately selected 5 clusters because I wanted to better separate out those agencies with growth during 2020 instead of the typical loss. 
+
+Link to the website: https://kateesutt.github.io/covid-transit/
+Link to the repo with a jupyter notebook and data: https://github.com/MUSA-550-Fall-2020/final-project-ksutt
