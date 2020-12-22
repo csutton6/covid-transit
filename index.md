@@ -4,6 +4,8 @@ altair-loader:
   altair-chart-1: "charts/covid_lines_1.json"
   altair-chart-2: "charts/first_cluster_chart_wider.json"
   altair-chart-3: "charts/ridership_byCluster.json"
+  altair-chart-4: "charts/fare_chart.json"
+
 
 hv-loader:
   hv-chart-1: ["charts/office_table_2.html", "400"] # second argument is the desired height
@@ -176,5 +178,8 @@ To find a transit agency in your city, filter by metro area.
 
 
 ## Fare Reliance
+<div id='altair-chart-4'></div>
+<div class='figure-caption'><strong>Figure 12.</strong> Fare reliance by October percent change in ridership. Fare reliance calculated as the percent of the operating budget that comes from fare revenue.</div>
+<br>
 
-To make true estimates about whether transit agency in a cluster will be similarly impacted by its ridership changes, its helpful to know to what extent the agency relies on fare revenue. If an agency's operating budget is more reliant on fares, we might expect that agency to be more likely to implement service cuts in the event of large-scale ridership losses. Other sources of revenue, such as sales tax, may also be at risk during the pandemic. Exploring fare reliance in an operating budget therefore provides a starting point to assess budget vulnerability. 
+To make true estimates about whether the transit agencies in a cluster will be similarly impacted by their ridership losses, it's important to know to what extent the agency relies on fare revenue. If an agency's operating budget is more reliant on fares, we might expect that agency to be more likely to implement service cuts in the event of large-scale ridership losses. Other sources of revenue, such as sales tax, may also be at risk during the pandemic. Exploring fare reliance in an operating budget therefore provides a starting point to assess budget vulnerability. 
