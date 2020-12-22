@@ -46,6 +46,15 @@ folium-loader:
   #altair-chart-3{
     width: 100px;
   }
+  #folium-chart-3{
+    width: 600px;
+  }
+  #hv-chart-7{
+    width: 600px;
+  }
+  #hv-chart-8{
+    width: 600px;
+  }
 </style>
 
 # COVID Transit Ridership
@@ -168,3 +177,4 @@ To find a transit agency in your city, filter by metro area.
 
 ## Fare Reliance
 
+To make true estimates about whether transit agency in a cluster will be similarly impacted by its ridership changes, its helpful to know to what extent the agency relies on fare revenue. If an agency's operating budget is more reliant on fares, we might expect that agency to be more likely to implement service cuts in the event of large-scale ridership losses. Other sources of revenue, such as sales tax, may also be at risk during the pandemic. Exploring fare reliance in an operating budget therefore provides a starting point to assess budget vulnerability. 
