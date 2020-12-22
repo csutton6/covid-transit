@@ -15,7 +15,7 @@ hv-loader:
 
 
 folium-loader:
-  folium-chart-3: ['charts/map_clusters.html', '400']
+  folium-chart-3: ['charts/map_clustering.html', '400']
 ---
 
 <style>
