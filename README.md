@@ -1,7 +1,7 @@
 # COVID-19 Transit Ridership Patterns
 ## Caleb Sutton | MUSA 550
 
-I created a single-page blog to explore transit ridership during the COVID-19 pandemic. I did a clustering analysis because I wanted to understand which agencies have fared similarly in regards to ridership. The blog itself is very detailed in regards to my methods and conclusions, so I'll provide a simple overview here. 
+For my final project in Geospatial Data Science in Python, I created a single-page blog to explore transit ridership during the COVID-19 pandemic. I did a clustering analysis because I wanted to understand which agencies have fared similarly in regards to ridership. The blog itself is very detailed in regards to my methods and conclusions, so I'll provide a simple overview here. 
 
 ## Steps
 
