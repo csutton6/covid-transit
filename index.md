@@ -163,8 +163,9 @@ The last cluster is very small, comprising only 6 agencies, almost all of which 
 [comment]: <> (**U.S. Transit Clusters Map**)
 [comment]: <> (<div id="folium-chart-3"></div>)
 
-[comment]: <> (<div class='figure-caption'><strong>Figure 9.</strong> Map of transit agencies by cluster. Colored according to cluster (1=teal, 2=orange, 3=purple, 4=magenta, 5=green).</div>
-<br>)
+[comment]: <> (<div class='figure-caption'><strong>Figure 9.</strong> Map of transit agencies by cluster.)
+[comment]: <> (Colored according to cluster (1=teal, 2=orange,3=purple,4=magenta, 5=green.</div><br>)
+
 
 
 
