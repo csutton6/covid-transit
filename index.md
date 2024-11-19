@@ -59,7 +59,7 @@ folium-loader:
   }
 </style>
 
-# COVID Transit Ridership
+# COVID-19 Transit Ridership
 
 <br>
 
