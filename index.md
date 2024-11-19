@@ -18,9 +18,10 @@ hv-loader:
   hv-chart-8: ['charts/cluster_byMetro.html', '400']
 
 
+[comment]: <> (folium-loader:)
+[comment]: <> (folium-chart-3: ['charts/map_clustering.html', '400'])
 
-folium-loader:
-  folium-chart-3: ['charts/map_clustering.html', '400']
+  
 ---
 
 <style>
