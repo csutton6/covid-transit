@@ -64,7 +64,7 @@ folium-loader:
 <br>
 
 ## Introduction
-The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership satistics for some transit agencies have plummeted as far as 90% below pre-COVID levels.
+The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership statistics for some transit agencies have plummeted as far as 90% below pre-COVID levels.
 
 <div id="altair-chart-1"></div>
 <div class='figure-caption'><strong>Figure 1.</strong> Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8 times larger than the next closest system, which distorts the scale of the graph. Source: National Transit Database. </div>
