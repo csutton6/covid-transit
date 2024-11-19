@@ -158,13 +158,15 @@ The agencies in this cluster form the bulk of the remaining agencies in this stu
 
 The last cluster is very small, comprising only 6 agencies, almost all of which experienced growth during one of the three months studied. Some of these systems, such as in Memphis, were launched as recently as 2019, so they had a small starting point from which to grow. The [California Vanpool Authority](https://calvans.org/history), which provides 15-passenger vans for commuters traveling to nearby destinations, has grown since its inception in 2002. 
 
-[comment]: <> (This is a comment, it will not be included)
-## Map of Clusters
+[comment]: <> (## Map of Clusters)
 
-**U.S. Transit Clusters Map**
-<div id="folium-chart-3"></div>
-<div class='figure-caption'><strong>Figure 9.</strong> Map of transit agencies by cluster. Colored according to cluster (1=teal, 2=orange, 3=purple, 4=magenta, 5=green).</div>
-<br>
+[comment]: <> (**U.S. Transit Clusters Map**)
+[comment]: <> (<div id="folium-chart-3"></div>)
+
+[comment]: <> (<div class='figure-caption'><strong>Figure 9.</strong> Map of transit agencies by cluster. Colored according to cluster (1=teal, 2=orange, 3=purple, 4=magenta, 5=green).</div>
+<br>)
+
+
 
 
 ## Clusters by Volume of Ridership
