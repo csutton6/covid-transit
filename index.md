@@ -72,7 +72,7 @@ The COVID-19 pandemic has dealt a harsh blow to the public transit industry in t
 
 However, not all agencies have been affected equally. Some have suffered greater ridership losses than others, and agencies have recovered from the initial fall at different rates. For example, Figure 1 shows that Chicago Transit Authority, which once carried 5 million monthly passengers more than LA Metro, has consistently ranked below LA Metro in ridership since April. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
 
-Clustering analysis is a statistical method that creates categories from data points based on the degree of similarity in a few chosen variables. Grouping transit agencies into typologies offers two types of insights: descriptive and solution-oriented. 
+<b>Clustering analysis</b> is a statistical method that creates categories from data points based on the degree of similarity in a few chosen variables. Grouping transit agencies into typologies offers two types of insights: descriptive and solution-oriented. 
 
 Clustering the variance among transit agencies into groups can create meaningful categories to describe the current situation. It could illuminate patterns that unite the agencies of a particular cluster. For example, agencies with smaller drops in ridership may draw more from essential workers or reside in regions that have sustained higher levels of travel during the pandemic. It could also identify groups of peer agencies that could rely on each other for inspiration and support. 
 
