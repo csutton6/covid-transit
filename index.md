@@ -64,15 +64,19 @@ folium-loader:
 <br>
 
 ## Introduction
-The COVID-19 pandemic dealt a harsh blow to the public transit industry in the United States. Ridership numbers for some agencies have plummeted asfar as 90% below their pre-covid levels.
+The COVID-19 pandemic has dealt a harsh blow to the public transit industry in the United States. Ridership satistics for some transit agencies have plummeted as far as 90% below pre-COVID levels.
 
 <div id="altair-chart-1"></div>
 <div class='figure-caption'><strong>Figure 1.</strong> Monthly ridership at the 20 transit agencies with the highest January 2020 ridership, excluding New York's MTA. NY MTA is excluded because its ridership is 8 times larger than the next closest system, which distorts the scale of the graph. Source: National Transit Database. </div>
 <br>
 
-However, not all agencies have been effected equally. Some have suffered greater ridership losses than others while some have recovered to a greater extent or at different times. For example, Figure 1 shows that Chicago Transit Authority, which once carried 5 million monthly passengers more than LA Metro, has consistently ranked below LA Metro since April. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
+However, not all agencies have been affected equally. Some have suffered greater ridership losses than others, and agencies have recovered from the initial fall at different rates. For example, Figure 1 shows that Chicago Transit Authority, which once carried 5 million monthly passengers more than LA Metro, has consistently ranked below LA Metro in ridership since April. In this project, I use clustering analysis to identify agencies that experienced similar ridership changes throughout the pandemic. 
 
-This analysis offers two potential insights. Clustering can help us understand the differences between transit agencies. Agencies with lesser drops in ridership may draw more from essential workers or reside in regions that have sustained higher levels of travel activity during the pandemic. These differences may prove to be informative once transit agencies are forced to make long-term decisions in response to the pandemic.After experiencing such staggering ridership losses, some agencies may need to make service cuts. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. The idea behind my clustering analysis is that agencies with similar patterns of ridership changes form a group of peer agencies and may make similar service changes as they cope with these challenging circumstances. This could be useful to transit planners as they look for examples from peer agencies or to transit advocates seeking to organize for better service.
+Clustering analysis is a statistical method that creates categories from data points based on the degree of similarity in a few chosen variables. Grouping transit agencies into typologies offers two types of insights: descriptive and solution-oriented. 
+
+Clustering the variance among transit agencies into groups can create meaningful categories to describe the current situation. It could illuminate patterns that unite the agencies of a particular cluster. For example, agencies with smaller drops in ridership may draw more from essential workers or reside in regions that have sustained higher levels of travel during the pandemic. It could also identify groups of peer agencies that could rely on each other for inspiration and support. 
+
+From a solutions perspective, the clusters offer an opportunity to learn which types of systems are be the most vulnerable. After experiencing such staggering ridership losses, some agencies may need to make service cuts. New York's MTA has warned it [could cut service](https://www.pix11.com/news/local-news/transit-officials-around-the-country-warn-of-service-cuts-and-layoffs) up to 40%. If there is a common funding structure, operating style, or infrastructure design of the most vulnerable transit systems, that would suggest the need for a tailored policy tool to ensure those transit systems survive the pandemic. 
 
 ## Methods
 
@@ -96,15 +100,15 @@ I grouped the data into five clusters, named as follows:
 
 <br>
 <div id="altair-chart-2"></div>
-<div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Sized according to peak vehicles to give a sense of agency size.</div>
+<div class='figure-caption'><strong>Figure 2.</strong> Clustering results using K-means clustering with 5 clusters. Features included percent ridership change between 2020 and 2019 in April, July, and October. Dots are sized according to the number of peak vehicles to give a sense of agency size.</div>
 
 <br>
 
-We see that most agencies experienced ridership losses during the pandemic, with the majority having lost more than 40% in April. Many agencies also recovered slightly by October, and a few small operators experienced growth in 2020.
+We see that most agencies experienced ridership losses during the pandemic, with the majority having lost more than 40% in April 2020. Many agencies also recovered slightly by October, and a few small operators experienced growth in 2020.
 
 <div id='hv-chart-2'></div>
 
-Comparing percent ridership losses, *Office Workers and Universities* suffered the most, losing 94% of ridership in April and only recovering to an 86% loss by October. As Cluster ID increases, the percent loss in ridership becomes less severe during all 3 months under comparison. 
+Comparing percent ridership losses, *Office Workers and Universities* suffered the most, losing 94% of ridership in April and only recovered to 86% of their pre-pandemic ridership by October. As Cluster ID increases, the percent loss in ridership becomes less severe during all 3 months under comparison. 
 
 
 <div id='altair-chart-3'></div>
@@ -123,7 +127,7 @@ The two highest performing clusters, *Small and Essential* and *Small and Growin
 
 This cluster suffered the highest percent ridership losses in 2020. Almost all of the commuter rail agencies are in this cluster, including Metro North in New York and Metra in Chicago. Because the ridership of such services tends to draw from suburban office commuters, I named this cluster after office workers. It includes a number of university transit systems. Some city transit agencies, including WMATA and BART fall in this cluster as well. Since they experience similar ridership trends as commuter rail systems, one could conclude that they also draw heavily from office commuters who worked from home during the pandemic. 
 
-### Struggling Legacy Systems
+### Cluster 2: Struggling Legacy Systems
 <div id="hv-chart-3"></div>
 
 <div class='figure-caption'><strong>Figure 5.</strong> All agencies in Cluster <i>Struggling Legacy Systems</i>. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
@@ -131,7 +135,7 @@ This cluster suffered the highest percent ridership losses in 2020. Almost all o
 
 This category includes many of the transit agencies with the highest ridership in the U.S., such as New York's MTA, Chicago's CTA, and Boston's MBTA. This category contains the bulk of the legacy systems, i.e. the heavy rail systems that were built in the U.S. before the 1960s, though there are many agencies without heavy rail as well. The fact that these systems performed better than *Office Workers and Universities* suggests that they draw from a more diverse ridership pool and have more riders who continued to need or want transit during the pandemic. However, they still suffered great losses. Since many of these cities are areas with dense urban cores, passengers may have more easily been able to substitute walking or biking for their former transit trips. 
 
-### Bus-Driven Recovery
+### Cluster 3: Bus-Driven Recovery
 <div id='hv-chart-4'></div>
 <div class='figure-caption'><strong>Figure 6.</strong> All agencies in Cluster <i>Bus-Driven Recovery</i>. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
 <br>
@@ -139,14 +143,14 @@ This category includes many of the transit agencies with the highest ridership i
 This cluster is similar to the previous in that it carries the second-highest average passenger levels, but it is predominated by bus transit systems. Though the agency does have rail, ridership at LA Metro [predominantly draws from its bus lines](http://isotp.metro.net/MetroRidership/Index.aspx). MTA Bus company is also an exclusively bus operator. The systems in this cluster likely draw from essential workers to an even greater extent than the *Struggling Legacy Systems*. A [study in 2018](https://www.its.ucla.edu/2018/01/31/new-report-its-scholars-on-the-cause-of-californias-falling-transit-ridership/) identified that the core of LA Metro's ridership is formed by low-income and immigrant riders without vehicles. The [LA Metro Customer Survey](https://media.metro.net/projects_studies/research/images/infographics/fall_2019__onboard_survey_results_and_trend_report.pdf) also indicates that bus riders have a lower median income than rail riders ($17,975 vs $27,723). If these same trends hold across other cities, we might expect that bus ridership would remain stronger at a time when low-wage hourly workers are more likely to work in-person or rely on public transportation for their trips. MARTA stands out as the largest second-generation transit system in this cluster, suggesting its ridership draws more from essential workers than BART or WMATA. 
 
 
-### Small and Essential 
+### Cluster 4: Small and Essential 
 <div id='hv-chart-5'></div>
 <div class='figure-caption'><strong>Figure 7.</strong> All agencies in Cluster <i>Small and Essential</i>. Default sorting is according to volume of October 2020 ridership. Table is scrollable.</div>
 <br>
 
 The agencies in this cluster form the bulk of the remaining agencies in this study. They have much lower mean ridership than the three previous clusters and come from smaller cities or metropolitan regions. They have on average experienced the strongest recoveries in October with some, such as the City of Asheville, experiencing growth in October. Perhaps these are the agencies with an even higher percentage of their riders drawing from essential workers, or perhaps these cities and regions saw a lesser reduction in activity levels during the pandemic. 
 
-### Small and Growing
+### Cluster 5: Small and Growing
 <div id='hv-chart-6'></div>
 <div class='figure-caption'><strong>Figure 8.</strong> All agencies in Cluster <i>Small and Growing</i>. Default sorting is according to volume of October 2020 ridership.</div>
 <br>
@@ -174,7 +178,7 @@ We see that all large agencies fall into the bottom three clusters, suggesting t
 <div class='figure-caption'><strong>Figure 11.</strong> Chart of clusters grouped by metro area. </div>
 <br>
 
-To find a transit agency in your city, filter by metro area. 
+To find a transit agency in your city, use the dropdown menu to filter by metro area. 
 
 
 ## Fare Reliance
@@ -182,6 +186,6 @@ To find a transit agency in your city, filter by metro area.
 <div class='figure-caption'><strong>Figure 12.</strong> Fare reliance by October percent change in ridership. Fare reliance calculated as the percent of the operating budget that comes from fare revenue.</div>
 <br>
 
-To make true estimates about whether the transit agencies in a cluster will be similarly impacted by their ridership losses, it's important to know to what extent the agency relies on fare revenue. If an agency's operating budget is more reliant on fares, we might expect that agency to be more likely to implement service cuts in the event of large-scale ridership losses. Other sources of revenue, such as sales tax, may also be at risk during the pandemic. Exploring fare reliance in an operating budget therefore provides a starting point to assess budget vulnerability.
+To make true estimates about whether the transit agencies in a cluster will be similarly impacted by their ridership losses, it's important to know to what extent the agency relies on fare revenue. If fare revenue comprises a higher share of an agency's operating budget, we might expect that agency to be more likely to implement service cuts in the event of large-scale ridership losses. Other sources of revenue, such as sales tax, may also be at risk during the pandemic. Exploring fare reliance in an operating budget therefore provides a starting point to assess budget vulnerability.
 
-Even though fare reliance was not included as a feature in the clustering process, we see that the agencies of a particular cluster do tend to fall near each other on the above chart. The agencies suffering higher ridership losses appear to have a higher reliance on fares. This does not bode well for the ability of U.S. transit agencies to weather the COVID-19 pandemic without outside financial support. 
+Even though fare reliance was not included as a feature in the clustering process, we see that the agencies of a particular cluster do tend to fall near each other on the above chart. The agencies suffering higher ridership losses appear to have a higher reliance on fares. This does not bode well for the ability of U.S. transit agencies to weather the COVID-19 pandemic without external financial support. 
